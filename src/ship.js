@@ -1,10 +1,18 @@
 function ship(s){
     let size = s;
     let maxHits = s;
+    let coords = []
 
-    const hit = () => {
+    const putCoords = (allCoords) => {
+        coords = allCoords;
+    }
+    const getCoords = () => {
+        return coords;
+    }
+    const hit = (i) => {
+        coords.splice(i,i+1)
         maxHits--;
-        return maxHits;
+        return coords;
     }
 
     const isSunk = () => {
@@ -12,9 +20,10 @@ function ship(s){
     }
 
     return {
-        size,
         hit,
-        isSunk
+        isSunk,
+        putCoords,
+        getCoords
     };
 }
 

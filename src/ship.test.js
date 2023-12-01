@@ -2,7 +2,8 @@ const ship = require("./ship");
 
 test("the ship been hitted", () => {
     let a = ship(3)
-    expect(a.hit()).toBe(2);
+    a.putCoords([[1, 2]]);
+    expect(a.hit(0)).toEqual([]);
 });
 
 test("the ship been destroyed", () => {
