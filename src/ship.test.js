@@ -1,16 +1,23 @@
-const ship = require("./ship");
+const ship = require('./ship');
 
-test("the ship been hitted", () => {
-    let a = ship(3)
-    a.putCoords([[1, 2]]);
-    expect(a.hit(0)).toEqual([]);
+test("Not sunk", () => {
+    let curShip = ship(3); 
+    expect(curShip.isSunk()).not.toBeTruthy();
 });
 
-test("the ship been destroyed", () => {
-    let b = ship(3)
-    b.hit()
-    expect(b.isSunk()).not.toBeTruthy()
-    b.hit()
-    b.hit()
-    expect(b.isSunk()).toBeTruthy();
+test("Sunk", () => {
+    let curShip = ship(3); 
+    curShip.hit();
+    curShip.hit();
+    curShip.hit();
+    expect(curShip.isSunk()).toBeTruthy();
+});
+
+test("Also Sunk", () => {
+    let curShip = ship(3); 
+    curShip.hit();
+    curShip.hit();
+    curShip.hit();
+    curShip.hit();
+    expect(curShip.isSunk()).toBeTruthy();
 });

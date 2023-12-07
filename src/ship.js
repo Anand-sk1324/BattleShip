@@ -1,30 +1,19 @@
-function ship(s){
-    let size = s;
-    let maxHits = s;
-    let coords = []
-
-    const putCoords = (allCoords) => {
-        coords = allCoords;
+function ship(n, shipLen) {
+    let name = n;
+    let len = shipLen;
+    let hits = 0;
+    function hit() {
+        if (!isSunk())
+            hits++;
     }
-    const getCoords = () => {
-        return coords;
+    function isSunk() {
+        return hits >= len;
     }
-    const hit = (i) => {
-        coords.splice(i,i+1)
-        maxHits--;
-        return coords;
-    }
-
-    const isSunk = () => {
-        return maxHits === 0;
-    }
-
     return {
+        name,
         hit,
-        isSunk,
-        putCoords,
-        getCoords
-    };
+        len,
+        isSunk
+    }
 }
-
 module.exports = ship;
